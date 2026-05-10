@@ -16,9 +16,8 @@
           <div class="photo-copy">
             <div class="photo-kicker">AI 疗愈卡片</div>
             <div class="photo-main">
-              <span>她不是变胖了</span>
-              <span>她只是刚刚完成一场</span>
-              <span>生命的接力</span>
+              <span>你的身体刚刚经历了</span>
+              <span>一趟漫长而勇敢的旅程</span>
             </div>
             <div class="photo-divider"></div>
             <div class="photo-sub">
@@ -33,16 +32,12 @@
       </div>
     </div>
     <h2 class="section-title">
-      她不是变胖了<br />
-      她只是刚刚完成一场<br />
-      <span class="red">生命的接力</span>
+
+      这里有一封<br />
+      写给<span class="red">妈妈</span>的信
     </h2>
-    <p class="section-sub">
-      不用急着改变自己<br />
-      先给身体一点温柔的回应
-    </p>
     <div class="home-entry">
-      <button class="btn home-start-btn" @click="store.go(2)">我准备好了</button>
+      <button class="btn home-start-btn" @click="store.go(2)">拆开看看</button>
       <div class="home-note standalone">倾诉 · 陪伴 · 疗愈</div>
     </div>
   </div>

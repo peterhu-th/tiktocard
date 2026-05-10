@@ -1,10 +1,10 @@
 <template>
   <div class="page-shell">
     <h2 class="section-title">
-      你真正<span class="red">在意</span>的<br />
-      可能不只是体重
+      你的身体刚刚经历了<br />
+      一趟<span class="red">漫长而勇敢的旅程</span>
     </h2>
-    <p class="section-sub">你会为了这些而不舒服吗？和 AI 聊聊吧！</p>
+    <p class="section-sub">你会因为这些而感到不舒服吗？和 AI 聊聊吧！</p>
 
     <div class="bubble-area">
       <button

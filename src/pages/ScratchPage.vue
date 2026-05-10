@@ -3,7 +3,7 @@
     <h2 class="section-title">
       刮开专属<span class="red">身体和解卡</span>
     </h2>
-    <p class="section-sub">你立刻变好，你已经很不容易。</p>
+    <p class="section-sub">你已经很不容易了，休息一下吧</p>
 
     <div class="scratch">
       <div class="paper-wrap">

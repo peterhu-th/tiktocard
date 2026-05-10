@@ -1,7 +1,7 @@
 <template>
   <div class="page-shell">
     <h2 class="section-title">
-      把这些<span class="red">苛责的声音</span><br />
+      把这些<span class="red">声音</span><br />
       交给 AI 温柔转化
     </h2>
     <div class="crusher-area" ref="transformAreaRef">
@@ -72,10 +72,10 @@ const animatingKeys = ref([])
 const isAnimating = ref(false)
 
 const machineLabel = computed(() => {
-  if (!store.selectedBadKeys.length) return '轻点卡片，可多选 1-6 个'
+  if (!store.selectedBadKeys.length) return '轻点卡片选中'
   if (isAnimating.value) return '正在温柔转化这些念头...'
-  if (store.crushed) return '已温柔粉碎，正在生成今日和解卡'
-  return `已选择 ${store.selectedBadKeys.length} 个念头，准备温柔粉碎`
+  if (store.crushed) return '已转化，正在生成今日和解卡'
+  return `已选择 ${store.selectedBadKeys.length} 个念头，准备转化`
 })
 
 const wait = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms))

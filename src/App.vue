@@ -43,6 +43,10 @@
                   · {{ item }}
                 </div>
               </div>
+              <div class="final-note" :class="{ 'saved-mode': hasSavedCard }">
+                {{ store.healingMessage || '你已经很努力了。今晚先把身体放回柔软里，喝一口温水，慢一点呼吸，把剩下的交给明天。' }}
+                <span v-if="store.isTyping && !store.showChatWindow" class="typing-cursor">|</span>
+              </div>
             </div>
           </div>
 
@@ -62,13 +66,9 @@
         <button class="btn final-save" :class="{ 'hidden-btn': hasSavedCard }" :disabled="isSavingCard" @click="handleSaveCard">
           {{ isSavingCard ? '正在保存...' : '保存这张卡片' }}
         </button>
-        <div class="final-note" :class="{ 'saved-mode': hasSavedCard }">
-          {{ store.healingMessage || '你已经很努力了。今晚先把身体放回柔软里，喝一口温水，慢一点呼吸，把剩下的交给明天。' }}
-          <span v-if="store.isTyping && !store.showChatWindow" class="typing-cursor">|</span>
-        </div>
         <div class="final-actions" :class="{ 'saved-mode': hasSavedCard }">
-          <button class="final-bubble" @click="store.showChatWindow = true">和Ta聊聊</button>
-          <button class="final-reset" @click="store.resetAll()">再做一次</button>
+          <button class="final-bubble bubble-btn" @click="store.showChatWindow = true">和Ta聊聊</button>
+          <button class="final-reset bubble-btn" @click="store.resetAll()">再做一次</button>
         </div>
       </div>
     </div>
@@ -159,3 +159,52 @@ const handleSaveCard = async () => {
   downloadCanvas(canvas)
 }
 </script>
+
+<style>
+/* 增加和解卡最小高度 */
+.memory-card {
+  min-height: 250px !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+/* AI 寄语现在在卡片内部 */
+.memory-card .final-note {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5c4d43;
+  margin-top: auto;
+  text-align: left;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(200, 180, 160, 0.4);
+}
+
+/* 底部选项气泡化 */
+.final-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.bubble-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 24px;
+  padding: 12px 24px;
+  color: #8c7b70;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(130, 110, 100, 0.15);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.bubble-btn:active {
+  transform: scale(0.96);
+  background: rgba(255, 255, 255, 1);
+}
+</style>

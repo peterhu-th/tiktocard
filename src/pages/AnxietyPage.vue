@@ -11,14 +11,21 @@
         v-for="(item, index) in anxieties"
         :key="item.key"
         class="anxiety"
-        :class="{ selected: store.selectedAnxietyKey === item.key }"
+        :class="[getShape(index), { selected: store.selectedAnxietyKey === item.key }]"
         :style="bubbleStyle(index)"
         @click="store.selectAnxiety(item.key)"
       >
-        {{ item.text }}
+        <small>{{ item.label || '感受' }}</small>
+        <span>{{ item.text }}</span>
       </button>
     </div>
 
+    <div class="anxiety-cta-row">
+      <button class="btn" :disabled="!store.selectedAnxietyKey" @click="store.go(3)">
+        {{ store.selectedAnxietyKey ? '把这个念头轻轻放下' : '先选择一个念头' }}
+      </button>
+    </div>
+    
     <div class="tip anxiety-tip">这些感受很真实，也很普通。<br />
       你完全不用为它们感到羞愧。</div>
     <div class="ghost-row">
@@ -33,19 +40,25 @@ import { useHealingStore } from '../store/useHealingStore'
 
 const store = useHealingStore()
 
+const getShape = (index) => {
+  return bubblePositions[index]?.shape || 'shape-bubble'
+}
+
 const bubbleStyle = (index) => {
   const meta = bubblePositions[index] ?? {
     top: `${10 + index * 12}%`,
     left: '12%',
     width: '240px',
-    delay: '0s'
+    delay: '0s',
+    rot: '0deg'
   }
   return {
     top: meta.top,
     left: meta.left,
     width: meta.width,
-    whiteSpace: 'nowrap',
-    animationDelay: meta.delay
+    whiteSpace: 'normal',
+    animationDelay: meta.delay,
+    '--rot': meta.rot || '0deg'
   }
 }
 </script>

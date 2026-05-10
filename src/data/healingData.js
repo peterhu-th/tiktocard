@@ -1,13 +1,13 @@
 export const anxieties = [
   {
     key: 'body',
-    text: '看着镜子里的身材，总觉得回不去了',
-    heal: '身体经历了一场伟大的孕育，\n它需要的是感谢，而不是苛责'
+    text: '总觉得我的身材回不去了',
+    heal: '身体经历了一场爱的孕育，\n请允许它慢慢愈合'
   },
   {
     key: 'identity',
     text: '除了是妈妈，我都快忘了自己是谁',
-    heal: '妈妈只是你的一个新标签，\n你依然可以拥有闪闪发光的自己'
+    heal: '成为母亲之前，\n你首先是闪闪发光的自己'
   },
   {
     key: 'support',
@@ -32,47 +32,53 @@ export const anxieties = [
 ]
 
 export const bubblePositions = [
-  { top: '5%', left: '5%', width: '254px', delay: '0s' },
-  { top: '18%', left: '38%', width: '214px', delay: '.25s' },
-  { top: '34%', left: '11%', width: '252px', delay: '.12s' },
-  { top: '48%', left: '10%', width: '286px', delay: '.4s' },
-  { top: '64%', left: '8%', width: '288px', delay: '.18s' },
-  { top: '79%', left: '19%', width: '244px', delay: '.3s' }
+  { top: '3%', left: '8%', width: '190px', delay: '0s', rot: '-3.5deg', shape: 'shape-cloud' },
+  { top: '16%', left: '38%', width: '185px', delay: '.25s', rot: '4.5deg', shape: 'shape-note' },
+  { top: '32%', left: '4%', width: '195px', delay: '.12s', rot: '-2.5deg', shape: 'shape-tag' },
+  { top: '48%', left: '42%', width: '190px', delay: '.4s', rot: '5deg', shape: 'shape-bubble' },
+  { top: '64%', left: '6%', width: '205px', delay: '.18s', rot: '-4deg', shape: 'shape-paper' },
+  { top: '78%', left: '35%', width: '190px', delay: '.3s', rot: '3deg', shape: 'shape-cloud' }
 ]
 
 export const badThoughts = [
   {
     key: 'body',
+    label: '身体里的声音',
     raw: '我现在的样子真难看',
     soft: '我的身体为了孕育生命付出了很多，它很伟大',
     action: '今天洗澡时，给自己涂点香香的身体乳，温柔地摸摸肚子'
   },
   {
     key: 'identity',
+    label: '心底的声音',
     raw: '我感到完全失去了自我',
     soft: '成为妈妈是一次升级，我正在探索全新的自己',
     action: '抽出 15 分钟，做一件只为自己开心的小事，比如听首喜欢的歌'
   },
   {
     key: 'support',
+    label: '委屈的声音',
     raw: '老公像个没事人一样，凭什么只有我这么辛苦',
     soft: '育儿是两个人的事，我可以明确表达我的需求',
     action: '直接给伴侣派一个具体任务，比如“今天你来哄宝宝睡觉”'
   },
   {
     key: 'guilt',
+    label: '自责的声音',
     raw: '宝宝哭了那么久，我好失败',
     soft: '宝宝哭闹是正常的发育过程，我已经尽全力在安抚他了',
     action: '看着镜子，对里面的自己说一句：“你今天已经做得很好了。”'
   },
   {
     key: 'exhaustion',
+    label: '疲惫的声音',
     raw: '我真的熬不下去了',
     soft: '我现在太累了，我需要并且值得好好休息',
     action: '下一次宝宝睡着时，和宝宝一起闭目养神'
   },
   {
     key: 'isolation',
+    label: '孤单的声音',
     raw: '大家都往前走，只有我停在原地',
     soft: '这段日子只是我人生中暂时的闭关，我的能力和社交圈依然存在',
     action: '给好朋友打个电话，聊聊今天的天气'

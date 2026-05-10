@@ -12,7 +12,7 @@
           <div class="paper-content">
             <div class="heal-line">{{ store.selectedAnxiety.heal }}</div>
           </div>
-          <div class="scratch-layer" ref="paperRef">
+          <div class="scratch-layer" ref="paperRef" :class="{ started: hasStarted, done: isDone }">
             <canvas
               ref="canvasRef"
               class="scratch-canvas"

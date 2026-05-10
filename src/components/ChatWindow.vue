@@ -11,7 +11,7 @@
 
     <div class="chat-list" ref="chatListRef">
       <div 
-        v-for="(msg, index) in store.chatHistory" 
+        v-for="(msg, index) in filteredChatHistory" 
         :key="index"
         class="chat-bubble-wrapper"
         :class="msg.role"
@@ -19,7 +19,7 @@
         <div class="chat-bubble">
           {{ msg.content }}
           <span 
-            v-if="store.isTyping && msg.role === 'assistant' && index === store.chatHistory.length - 1" 
+            v-if="store.isTyping && msg.role === 'assistant' && index === filteredChatHistory.length - 1" 
             class="typing-cursor"
           >|</span>
         </div>
@@ -42,12 +42,20 @@
 </template>
 
 <script setup>
-import { ref, watch, nextTick } from 'vue'
+import { ref, watch, nextTick, computed } from 'vue'
 import { useHealingStore } from '../store/useHealingStore'
 
 const store = useHealingStore()
 const inputText = ref('')
 const chatListRef = ref(null)
+
+const filteredChatHistory = computed(() => {
+  const history = store.chatHistory
+  if (history.length > 0 && history[0].role === 'user') {
+    return history.slice(1)
+  }
+  return history
+})
 
 const scrollToBottom = async () => {
   await nextTick()
@@ -153,7 +161,7 @@ const handleSend = () => {
 }
 
 .user .chat-bubble {
-  background-color: #d1bba8;
+  background-color: var(--rose);
   color: #fff;
   border-bottom-right-radius: 4px;
 }
@@ -213,7 +221,7 @@ const handleSend = () => {
   width: 64px;
   height: 40px;
   border-radius: 20px;
-  background-color: #d1bba8;
+  background-color: var(--rose);
   color: white;
   border: none;
   font-size: 15px;

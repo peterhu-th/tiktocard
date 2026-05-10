@@ -1,16 +1,15 @@
 <template>
   <div class="page-shell">
     <h2 class="section-title">
-      把<span class="red">让你不开心的念头</span><br />
-      通通丢掉
+      把这些<span class="red">苛责的声音</span><br />
+      交给 AI 温柔转化
     </h2>
-    <p class="section-sub">选中困住你的念头，把它们温柔转化。</p>
-
     <div class="crusher-area" ref="transformAreaRef">
-      <div class="bad-zone">
+      <div class="bad-zone" id="badZone">
         <button
           v-for="item in badThoughts"
           :key="item.key"
+          v-show="isSelected(item.key) || (!isAnimating && !store.crushed)"
           class="bad-card"
           :ref="(el) => setBubbleRef(el, item.key)"
           :class="{
@@ -22,8 +21,8 @@
           }"
           @click="toggle(item.key)"
         >
-          <small>{{ isSelected(item.key) && store.crushed ? 'AI 转化' : '负面念头' }}</small>
-          {{ bubbleText(item) }}
+          <small>{{ isSelected(item.key) && store.crushed ? 'AI 转化' : (item.label || '念头') }}</small>
+          <div class="bad-text">{{ bubbleText(item) }}</div>
         </button>
       </div>
 
@@ -37,19 +36,21 @@
         <div
           v-for="bubble in flyingBubbles"
           :key="bubble.id"
-          class="flying-bubble"
+          class="flying-bubble bad-card"
           :class="bubble.kind"
           :style="bubble.style"
         >
           <small>{{ bubble.label }}</small>
-          {{ bubble.text }}
+          <div class="bad-text">{{ bubble.text }}</div>
         </div>
       </div>
     </div>
 
-    <button class="btn" :disabled="!store.selectedBadKeys.length" @click="handleAction">
-      {{ store.crushed ? '生成今日和解卡' : '开始转化' }}
-    </button>
+    <div class="crusher-cta-row">
+      <button class="btn" :disabled="!store.selectedBadKeys.length" @click="handleAction">
+        {{ store.crushed ? '下一页' : '交给 AI 温柔化开' }}
+      </button>
+    </div>
     <div class="ghost-row">
       <button class="ghost" @click="store.go(3)">返回上一页</button>
       <button class="ghost" @click="store.resetAll()">重新开始</button>
@@ -246,3 +247,32 @@ const handleAction = () => {
   store.openFinal()
 }
 </script>
+
+<style scoped>
+#badZone {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+#badZone .bad-card {
+  width: calc(50% - 5px);
+  box-sizing: border-box;
+  text-align: center;
+}
+.bad-card small {
+  display: block;
+  margin: 0 auto 11px auto;
+}
+.flying-bubble {
+  position: absolute;
+  z-index: 10;
+  transition: transform 0.56s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.56s ease;
+  margin: 0;
+}
+.transform-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+</style>

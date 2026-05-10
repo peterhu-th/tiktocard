@@ -30,7 +30,6 @@
           </div>
         </div>
       </div>
-      <div class="decor-heart">♡</div>
       <div class="tip scratch-tip">用手指在卡片上来回滑动，露出专属和解句</div>
     </div>
 

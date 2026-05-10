@@ -656,7 +656,6 @@
       25% { opacity: 1; }
       100% { opacity: 0; transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y))) scale(1.25); }
     }
-    .decor-heart { color: #e09898; font-size: 18px; margin-top: 16px; }
     .crusher-area {
       position: relative;
       min-height: 512px;

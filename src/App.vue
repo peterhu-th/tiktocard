@@ -326,7 +326,7 @@ const handleSaveCard = async () => {
 
 .memory-stage {
   position: relative;
-  padding: 0 !important;
+  padding: 12px !important;
   margin-top: 6px !important;
 }
 
@@ -428,6 +428,7 @@ const handleSaveCard = async () => {
   padding: 18px 18px 26px;
   position: relative;
   overflow: hidden;
+  border-radius: 24px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 241, 0.82)),
     radial-gradient(circle at top right, rgba(255, 237, 215, 0.58), rgba(255, 237, 215, 0));

@@ -37,7 +37,9 @@
       写给<span class="red">妈妈</span>的信
     </h2>
     <div class="home-entry">
-      <button class="btn home-start-btn" @click="store.go(2)">拆开看看</button>
+      <button class="btn home-start-btn" @click="handleAction">
+        {{ isOpened ? '开始旅程' : '拆开看看' }}
+      </button>
       <div class="home-note standalone">倾诉 · 陪伴 · 疗愈</div>
     </div>
   </div>
@@ -54,6 +56,14 @@ const isOpened = ref(false)
 const openEnvelope = () => {
   if (!isOpened.value) {
     isOpened.value = true
+  }
+}
+
+const handleAction = () => {
+  if (!isOpened.value) {
+    isOpened.value = true
+  } else {
+    store.go(2)
   }
 }
 </script>

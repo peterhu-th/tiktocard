@@ -197,7 +197,7 @@ export const useHealingStore = defineStore('healing', () => {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          model: 'deepseek-v4-flash',
+          model: 'deepseek-v3.2',
           messages,
           stream: true
         })
@@ -233,6 +233,7 @@ export const useHealingStore = defineStore('healing', () => {
                 const content = data.choices?.[0]?.delta?.content
                 if (content) {
                   chatHistory.value[chatHistory.value.length - 1].content += content
+                  healingMessage.value += content
                 }
               } catch (e) {
                 console.error('Error parsing SSE data:', e, dataStr)
@@ -243,8 +244,9 @@ export const useHealingStore = defineStore('healing', () => {
       }
     } catch (e) {
       console.error(e)
-      chatHistory.value[chatHistory.value.length - 1].content += "（抱歉，我现在有点累了，稍后再陪你聊好吗？）"
-    } finally {
+      const fallbackText = "你已经很努力了。今晚先把身体放回柔软里，喝一口温水，慢一点呼吸，把剩下的交给明天。";
+      chatHistory.value[chatHistory.value.length - 1].content = fallbackText;
+      healingMessage.value = fallbackText;    } finally {
       isTyping.value = false
     }
   }

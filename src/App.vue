@@ -63,14 +63,17 @@
           {{ isSavingCard ? '正在保存...' : '保存这张卡片' }}
         </button>
         <div class="final-note" :class="{ 'saved-mode': hasSavedCard }">
-          你已经很努力了。今晚先把身体放回柔软里，喝一口温水，慢一点呼吸，把剩下的交给明天。
+          {{ store.healingMessage || '你已经很努力了。今晚先把身体放回柔软里，喝一口温水，慢一点呼吸，把剩下的交给明天。' }}
+          <span v-if="store.isTyping && !store.showChatWindow" class="typing-cursor">|</span>
         </div>
         <div class="final-actions" :class="{ 'saved-mode': hasSavedCard }">
-          <button class="final-bubble" @click="store.closeFinal()">和Ta聊聊</button>
+          <button class="final-bubble" @click="store.showChatWindow = true">和Ta聊聊</button>
           <button class="final-reset" @click="store.resetAll()">再做一次</button>
         </div>
       </div>
     </div>
+
+    <ChatWindow v-if="store.showChatWindow" />
   </main>
 </template>
 
@@ -82,6 +85,7 @@ import HomePage from './pages/HomePage.vue'
 import AnxietyPage from './pages/AnxietyPage.vue'
 import ScratchPage from './pages/ScratchPage.vue'
 import CrusherPage from './pages/TransformPage.vue'
+import ChatWindow from './components/ChatWindow.vue'
 
 const store = useHealingStore()
 
